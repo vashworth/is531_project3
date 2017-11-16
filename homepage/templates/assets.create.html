@@ -1,0 +1,26 @@
+<%inherit file="base.htm" />
+
+<%block name="content">
+<section id="create_asset">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2>Create a new asset</h2>
+        <br />
+        <form id="#CreateAssetForm" action="/assets.create" role="form" method="POST">${ csrf_input}
+          <table class="table">
+          ${ form }
+          <script>
+              $('#datepicker').datepicker({
+                  uiLibrary: 'bootstrap4',
+                  iconsLibrary: 'fontawesome'
+              });
+          </script>
+          </table>
+          <input type="submit" class="btn btn-custom" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</%block>

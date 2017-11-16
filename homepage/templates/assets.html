@@ -1,0 +1,94 @@
+<%inherit file="base.htm" />
+
+<%block name="content">
+<section id="assets">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <ul class="nav nav-pills nav-fill">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="/assets">Assets</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/locations">Locations</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/manufacturers">Manufacturers</a>
+                  </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <a href="assets.create" class="btn">Create new asset</a>
+                <table class="table">
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Location
+                        </th>
+                        <th>
+                            Manufacturer
+                        </th>
+                        <th>
+                            Manufacturer Part Number
+                        </th>
+                        <th>
+                            Maintenance Notes
+                        </th>
+                        <th>
+                            Date Implemented
+                        </th>
+                        <th>
+                            Actions
+                        </th>
+                    </tr>
+                    %for a in assets:
+                    <tr>
+                        <td>
+                            ${ a.id }
+                        </td>
+                        <td>
+                            ${ a.desc }
+                        </td>
+                        <td>
+                            %for l in locations:
+                                %if a.location_id == l.id :
+                                    ${ l.location_name }
+                                %endif
+                            %endfor
+                        </td>
+                        <td>
+                            %for m in manufacturers:
+                                %if a.manufacturer_id == m.id:
+                                    ${ m.manufacturer_name }
+                                %endif
+                            %endfor
+                        </td>
+                        <td>
+                            ${ a.part_number }
+                        </td>
+                        <td>
+                            ${ a.maintenance_notes }
+                        </td>
+                        <td>
+                            ${ a.date }
+                        </td>
+                        <td>
+                            <a href="/assets.edit/${ a.id }">Edit</a> |
+                            <a href="/assets.delete/${ a.id }">Delete</a>
+                        </td>
+                    </tr>
+                    %endfor
+                </table>
+            </div>
+        </div>
+    </div>
+
+</section>
+</%block>

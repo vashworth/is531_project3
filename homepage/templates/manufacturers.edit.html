@@ -1,0 +1,20 @@
+<%inherit file="base.htm" />
+
+<%block name="content">
+<section id="edit_manufacture">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2>Edit manufacture</h2>
+        <br />
+        <form id="#EditManufactureForm" action="/manufacturers.edit/${ manufacturer.id }" role="form" method="POST">${ csrf_input}
+          <table class="table">
+          ${ form }
+          </table>
+          <input type="submit" class="btn btn-custom" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</%block>
