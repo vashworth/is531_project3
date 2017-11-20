@@ -1,20 +1,46 @@
 <%inherit file="base.htm" />
 
 <%block name="content">
-<section id="create_manufacturer">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <h2>Create a new manufacturer</h2>
-        <br />
-        <form id="#CreateManufacturerForm" action="/manufacturers.create" role="form" method="POST">${ csrf_input}
-          <table class="table">
-          ${ form }
-          </table>
-          <input type="submit" class="btn btn-custom" value="Submit">
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="wrapper">
+    <section id="create_manufacturer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="nav nav-pills nav-fill">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/assets">Assets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/locations">Locations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/manufacturers">Manufacturers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Create a new manufacturer</h4>
+                            <hr />
+                            <form id="CreateManufacturerForm" action="/manufacturers.create" role="form" method="POST">${ csrf_input}
+                                <table class="table">
+                                    ${ form }
+                                </table>
+                                <div class="text-center">
+                                    <input type="submit" class="btn btn-dark" value="Submit">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 </%block>

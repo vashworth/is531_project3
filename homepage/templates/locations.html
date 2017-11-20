@@ -1,56 +1,54 @@
 <%inherit file="base.htm" />
 
 <%block name="content">
-<section id="assets">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <ul class="nav nav-pills nav-fill">
-                  <li class="nav-item">
-                    <a class="nav-link" href="/assets">Assets</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" href="/locations">Locations</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/manufacturers">Manufacturers</a>
-                  </li>
-                </ul>
+<div class="wrapper">
+    <section id="locations">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="nav nav-pills nav-fill">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/assets">Assets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/locations">Locations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/manufacturers">Manufacturers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <a href="locations.create" class="btn btn-dark">Create new location</a>
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Actions</th>
+                                </tr>
+                                %for l in locations:
+                                <tr>
+                                    <td>${ l.id }</td>
+                                    <td>${ l.location_name}</td>
+                                    <td>
+                                        <a href="/locations.edit/${ l.id }">Edit</a> |
+                                        <a href="/locations.delete/${ l.id }">Delete</a>
+                                    </td>
+                                </tr>
+                                %endfor
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <a href="locations.create" class="btn">Create new location</a>
-                <table class="table">
-                    <tr>
-                        <th>
-                            ID
-                        </th>
-                        <th>
-                            Name
-                        </th>
-                        <th>
-                            Actions
-                        </th>
-                    </tr>
-                    %for l in locations:
-                    <tr>
-                        <td>
-                            ${ l.id }
-                        </td>
-                        <td>
-                            ${ l.location_name}
-                        </td>
-                        <td>
-                            <a href="/locations.edit/${ l.id }">Edit</a> |
-                            <a href="/locations.delete/${ l.id }">Delete</a>
-                        </td>
-                    </tr>
-                    %endfor
-                </table>
-            </div>
-        </div>
-    </div>
-
-</section>
+    </section>
+</div>
 </%block>

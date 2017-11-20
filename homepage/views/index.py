@@ -5,9 +5,12 @@ from django import forms
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import authenticate, login
 
-
+############### LOGIN USER ###############
 @view_function
 def process_request(request):
+    '''Logs in a user using a form'''
+
+    #if user is already logged in, send to asset page
     if request.user.is_authenticated():
         return HttpResponseRedirect('/assets')
 
@@ -15,14 +18,15 @@ def process_request(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
+            #login user
             login(request, form.user)
             return HttpResponseRedirect('/assets')
 
-    template_vars = {
+    context = {
         'form' : form,
     }
 
-    return request.dmp_render('index.html', template_vars)
+    return request.dmp_render('index.html', context)
 
 
 class LoginForm(forms.Form):

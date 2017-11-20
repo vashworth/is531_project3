@@ -1,0 +1,1 @@
+DJANGO_MAKO_PLUS = True

@@ -6,23 +6,34 @@ from homepage import models as m
 from django import forms
 from django.http import  HttpResponse, HttpResponseRedirect
 
+
+############### LIST MANUFACTURERS ###############
 @view_function
 @login_required(login_url='/index')
 def process_request(request):
+    '''Lists the manufacturers in a table on the page'''
+
+    #require login
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/index')
 
+    #get all manufacturers from DB
     manufacturers = m.Manufacturer.objects.all()
 
-    template_vars = {
+    context = {
         'manufacturers': manufacturers,
     }
 
-    return request.dmp_render('manufacturers.html', template_vars)
+    return request.dmp_render('manufacturers.html', context)
 
+
+############### CREATE MANUFACTURER ###############
 @view_function
 @login_required(login_url='/index')
 def create(request):
+    '''Creates a new manufacturer using a form'''
+
+    #require login
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/index')
 
@@ -30,9 +41,10 @@ def create(request):
     if request.method == 'POST':
         form = CreateManufacturerForm(request.POST)
         if form.is_valid():
-            loc = m.Manufacturer()
-            loc.manufacturer_name = form.cleaned_data.get('name')
-            loc.save()
+            #create new manufacturer
+            manu = m.Manufacturer()
+            manu.manufacturer_name = form.cleaned_data.get('name')
+            manu.save()
 
             return HttpResponse('''
             <script>
@@ -40,35 +52,41 @@ def create(request):
             </script>
             ''')
 
-    template_vars = {
+    context = {
         'form': form,
     }
-    return request.dmp_render('manufacturers.create.html', template_vars)
+    return request.dmp_render('manufacturers.create.html', context)
 
 class CreateManufacturerForm(forms.Form):
     name = forms.CharField(label='Name', required=True, max_length=100, widget=forms.TextInput(attrs={ 'class' : "form-control" }))
 
 
-
+############### EDIT MANUFACTURER ###############
 @view_function
 @login_required(login_url='/index')
 def edit(request):
+    '''Edit/Update a preexisting manufacturer using a form'''
+
+    #require login
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/index')
 
+    #get manufacturer by ID
     try:
-        loc = m.Manufacturer.objects.get(id=request.urlparams[0])
+        manu = m.Manufacturer.objects.get(id=request.urlparams[0])
     except m.Manufacturer.DoesNotExist:
         return HttpResponseRedirect('/manufacturers')
 
+    #intialize form
     form = EditManufacturerForm(initial={
-        'manufacturer_id': loc.id,
-        'manufacturer_name' : loc.manufacturer_name,
+        'manufacturer_id': manu.id,
+        'manufacturer_name' : manu.manufacturer_name,
     })
 
     if request.method == 'POST':
         form = EditManufacturerForm(request.POST)
         if form.is_valid():
+            #get manufacturer by ID and update fields
             manufacturer = m.Manufacturer.objects.get(id=request.urlparams[0])
             manufacturer.manufacturer_name = form.cleaned_data.get('manufacturer_name')
             manufacturer.save()
@@ -79,29 +97,35 @@ def edit(request):
             </script>
             ''')
 
-    template_vars = {
-        'manufacturer': loc,
+    context = {
+        'manufacturer': manu,
         'form': form,
     }
-    return request.dmp_render('manufacturers.edit.html', template_vars)
+    return request.dmp_render('manufacturers.edit.html', context)
 
 class EditManufacturerForm(forms.Form):
     manufacturer_id = forms.IntegerField(label='ID', required=False, disabled=True, widget=forms.NumberInput(attrs={ 'class' : "form-control" }))
     manufacturer_name = forms.CharField(label='Name', required=True, max_length=100, widget=forms.TextInput(attrs={ 'class' : "form-control" }))
 
 
+############### DELETE MANUFACTURER ###############
 @view_function
 @login_required(login_url='/index')
 def delete(request):
+    '''Delete a preexisting manufacturer from DB'''
+
+    #require login
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/index')
 
+    #get manufacturer by ID
     try:
-        loc = m.Manufacturer.objects.get(id=request.urlparams[0])
+        manu = m.Manufacturer.objects.get(id=request.urlparams[0])
     except m.Manufacturer.DoesNotExist:
         return HttpResponseRedirect('/manufacturers')
 
-    loc.delete()
+    #delete manufacturer
+    manu.delete()
 
     return HttpResponse('''
     <script>

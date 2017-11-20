@@ -1,0 +1,34 @@
+#create_asset {
+    height: 100%;
+    background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+}
+
+.nav {
+    border-radius: .25rem;
+    margin-bottom: 50px;
+}
+
+#create_asset .nav-link.active {
+    background-color: #2b5876;
+}
+
+#create_asset .nav-link {
+    color: #fff;
+}
+
+#create_asset .nav-link:hover {
+    color: #343A40;
+}
+
+.table {
+    margin-top: 20px;
+    text-align: right;
+}
+
+#CreateAssetForm td, #CreateAssetForm th {
+    border: 0;
+}
+
+#CreateAssetForm .btn:hover {
+    cursor: pointer;
+}

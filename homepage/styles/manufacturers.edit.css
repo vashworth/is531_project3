@@ -1,0 +1,33 @@
+#edit_manufacturer {
+    height: 100%;
+}
+
+.nav {
+    border-radius: .25rem;
+    margin-bottom: 50px;
+}
+
+#edit_manufacturer .nav-link.active {
+    background-color: #2b5876;
+}
+
+#edit_manufacturer .nav-link {
+    color: #fff;
+}
+
+#edit_manufacturer .nav-link:hover {
+    color: #343A40;
+}
+
+.table {
+    margin-top: 20px;
+    text-align: right;
+}
+
+#EditManufacturerForm td, #EditManufacturerForm th {
+    border: 0;
+}
+
+#EditManufacturerForm .btn:hover {
+    cursor: pointer;
+}

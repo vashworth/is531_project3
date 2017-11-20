@@ -1,0 +1,33 @@
+#edit_asset {
+    height: 100%;
+}
+
+.nav {
+    border-radius: .25rem;
+    margin-bottom: 50px;
+}
+
+#edit_asset .nav-link.active {
+    background-color: #2b5876;
+}
+
+#edit_asset .nav-link {
+    color: #fff;
+}
+
+#edit_asset .nav-link:hover {
+    color: #343A40;
+}
+
+.table {
+    margin-top: 20px;
+    text-align: right;
+}
+
+#EditAssetForm td, #EditAssetForm th {
+    border: 0;
+}
+
+#EditAssetForm .btn:hover {
+    cursor: pointer;
+}

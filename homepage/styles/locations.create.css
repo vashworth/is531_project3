@@ -1,0 +1,34 @@
+#create_location {
+    height: 100%;
+    background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
+}
+
+.nav {
+    border-radius: .25rem;
+    margin-bottom: 50px;
+}
+
+#create_location .nav-link.active {
+    background-color: #2b5876;
+}
+
+#create_location .nav-link {
+    color: #fff;
+}
+
+#create_location .nav-link:hover {
+    color: #343A40;
+}
+
+.table {
+    margin-top: 20px;
+    text-align: right;
+}
+
+#CreateLocationForm td, #CreateLocationForm th {
+    border: 0;
+}
+
+#CreateLocationForm .btn:hover {
+    cursor: pointer;
+}

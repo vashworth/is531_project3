@@ -1,0 +1,37 @@
+#assets {
+    height: 100%;
+}
+
+.nav {
+    border-radius: .25rem;
+    margin-bottom: 50px;
+}
+
+#assets .nav-link.active {
+    background-color: #2b5876;
+}
+
+#assets .nav-link {
+    color: #fff;
+}
+
+#assets .nav-link:hover {
+    color: #343A40;
+}
+
+.card {
+    margin-top: 20px;
+}
+
+.table {
+    margin-top: 20px;
+}
+
+#assets .table a {
+    color: #4e4376;
+}
+
+#assets .table a:hover {
+    color: #343A40;
+    text-decoration: none;
+}

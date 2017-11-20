@@ -1,0 +1,33 @@
+#edit_location {
+    height: 100%;
+}
+
+.nav {
+    border-radius: .25rem;
+    margin-bottom: 50px;
+}
+
+#edit_location .nav-link.active {
+    background-color: #2b5876;
+}
+
+#edit_location .nav-link {
+    color: #fff;
+}
+
+#edit_location .nav-link:hover {
+    color: #343A40;
+}
+
+.table {
+    margin-top: 20px;
+    text-align: right;
+}
+
+#EditLocationForm td, #EditLocationForm th {
+    border: 0;
+}
+
+#EditLocationForm .btn:hover {
+    cursor: pointer;
+}

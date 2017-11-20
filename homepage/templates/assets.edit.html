@@ -2,16 +2,16 @@
 
 <%block name="content">
 <div class="wrapper">
-    <section id="create_location">
+    <section id="edit_asset">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <ul class="nav nav-pills nav-fill">
                         <li class="nav-item">
-                            <a class="nav-link" href="/assets">Assets</a>
+                            <a class="nav-link active" href="/assets">Assets</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="/locations">Locations</a>
+                            <a class="nav-link" href="/locations">Locations</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/manufacturers">Manufacturers</a>
@@ -26,11 +26,17 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Create a new location</h4>
+                            <h4 class="card-title">Edit an asset</h4>
                             <hr />
-                            <form id="CreateLocationForm" action="/locations.create" role="form" method="POST">${ csrf_input}
+                            <form id="EditAssetForm" action="/assets.edit" role="form" method="POST">${ csrf_input}
                                 <table class="table">
                                     ${ form }
+                                    <script>
+                                        $('#datepicker').datepicker({
+                                            uiLibrary: 'bootstrap4',
+                                            iconsLibrary: 'fontawesome'
+                                        });
+                                    </script>
                                 </table>
                                 <div class="text-center">
                                     <input type="submit" class="btn btn-dark" value="Submit">
