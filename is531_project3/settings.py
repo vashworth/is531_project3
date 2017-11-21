@@ -198,7 +198,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "www", "static")
 
 
 # A logger for DMP
-DEBUG_PROPAGATE_EXCEPTIONS = DEBUG  # SECURITY WARNING: never set this True on a live site
+DEBUG_PROPAGATE_EXCEPTIONS = False  # SECURITY WARNING: never set this True on a live site
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
