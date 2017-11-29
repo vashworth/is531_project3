@@ -28,7 +28,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Edit an asset</h4>
                             <hr />
-                            <form id="EditAssetForm" action="/assets.edit" role="form" method="POST">${ csrf_input}
+                            <form id="EditAssetForm" action="/assets.edit/${ asset.id }" role="form" method="POST">${ csrf_input}
                                 <table class="table">
                                     ${ form }
                                     <script>
